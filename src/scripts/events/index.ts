@@ -1,6 +1,6 @@
 hexo.on('ready', () => {
-  const version = "0.0.1"
-  console.log("\x1B[32m", `
+    const version = "0.0.1"
+    console.log("\x1B[32m", `
   ████████╗██████╗ ███████╗███████╗ ██████╗ ██╗██╗
   ╚══██╔══╝██╔══██╗██╔════╝██╔════╝██╔═══██╗██║██║
      ██║   ██████╔╝█████╗  █████╗  ██║   ██║██║██║
@@ -9,10 +9,5 @@ hexo.on('ready', () => {
      ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝      ╚═════╝ ╚═╝╚══════╝
                   Welcome to trefoil!
                     version: ${version}
-  `)
-})
-
-hexo.on('generateBefore', () => {
-  // require('./lib/series-dist-gen')(hexo)
-  // require('./lib/utils')(hexo)
+    `)
 })
