@@ -2,7 +2,7 @@ import { PRIORITY_LOW } from '@/scripts/filters/_defs'
 
 import fm from 'hexo-front-matter'
 import fs from "hexo-fs";
-import {useConfig} from "@/scripts/_helpers/configs";
+import {useConfig} from "@/scripts/_utils/configs";
 
 function isEnabled(): boolean {
     const config = useConfig().theme.abbrlink
