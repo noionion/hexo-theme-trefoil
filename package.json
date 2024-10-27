@@ -4,12 +4,14 @@
   "description": "",
   "type": "module",
   "scripts": {
+    "prepare": "husky install",
     "build:clean": "rm -rf build",
     "build:rollup": "rollup --config rollup.config.ts --configPlugin rollup-plugin-esbuild",
     "build:sync": "tsx scripts/sync.ts",
     "build": "run-s build:clean build:rollup build:sync",
-    "dev:monitor": "onchange 'src/**/*' -- pnpm build",
-    "dev": "run-s build dev:monitor"
+    "dev:watch": "onchange 'src/**/*' -- pnpm build",
+    "dev": "run-s build dev:watch",
+    "eslint": "eslint"
   },
   "keywords": [],
   "author": "",
@@ -22,20 +24,24 @@
     "hexo-renderer-pug": "^3.0.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.13.0",
     "@rollup/plugin-alias": "^5.1.0",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.14.11",
+    "eslint": "^9.13.0",
     "fast-glob": "^3.3.2",
     "hexo": "^7.3.0",
+    "husky": "^8.0.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
-    "rollup": "^4.18.1",
+    "rollup": "^4.22.4",
     "rollup-plugin-esbuild": "^6.1.1",
     "tslib": "^2.6.3",
     "tsx": "^4.16.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.11.0"
   }
 }

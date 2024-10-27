@@ -1,22 +1,30 @@
+import fm from 'hexo-front-matter'
+import fs from 'hexo-fs';
+
 import { PRIORITY_LOW } from '@/scripts/filters/_defs'
 
-import fm from 'hexo-front-matter'
-import fs from "hexo-fs";
-import {useConfig} from "@/scripts/_utils/configs";
+import type { Post } from '@/scripts/_utils/types';
+import { useConfig } from '@/scripts/_utils/configs';
+
+interface AbbrlinkConfigs {
+    enable: boolean;
+    length: number;
+}
 
 function isEnabled(): boolean {
-    const config = useConfig().theme.abbrlink
-    return config && config.enable
+    const config: AbbrlinkConfigs | undefined = useConfig().theme.abbrlink
+    return Boolean(config?.enable)
 }
 
 function hash(...args: any[]): string {
-    const config = useConfig().theme.abbrlink
+    const config: AbbrlinkConfigs = useConfig().theme.abbrlink
 
     const exp = Math.max(Math.min(config.length || 0, 7), 5)
-    const m = Math.pow(10, exp)
+    const m = 10 ** exp
 
     let code = 0
     for (const arg of args) {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         const str = `${arg}`
 
         for (let i = 0; i < str.length; i++) {
@@ -54,13 +62,15 @@ hexo.on('generateBefore', () => {
     hexo.locals.set('abbrlinks', links)
 })
 
-hexo.extend.filter.register('before_post_render', function(data) {
+hexo.extend.filter.register('before_post_render', (data: Post) => {
     if (!isEnabled()) {
         return
     }
 
     // 跳过已有 abbrlink 的文章和非 post 页面
-    if (data.abbrlink || data.layout !== 'post') return
+    if (data.abbrlink || data.layout !== 'post') {
+        return
+    }
 
     const front = fm.parse(data.raw)
     const abbrlink = hash(front.title)
@@ -68,7 +78,7 @@ hexo.extend.filter.register('before_post_render', function(data) {
     front.abbrlink = abbrlink
     data.abbrlink = abbrlink
 
-    fs.writeFileSync(data.full_source, '---\n' + fm.stringify(front), 'utf-8')
+    fs.writeFileSync(data.full_source, `---\n${fm.stringify(front) as string}`, 'utf-8')
 
     hexo.log.info(`Generated abbrlink ${abbrlink} for post \`${data.source}\``)
 }, PRIORITY_LOW)

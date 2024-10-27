@@ -1,6 +1,7 @@
 hexo.on('ready', () => {
-    const version = "0.0.1"
-    console.log("\x1B[32m", `
+    const version = '0.0.1'
+    // eslint-disable-next-line no-console
+    console.log('\x1B[32m', `
   ████████╗██████╗ ███████╗███████╗ ██████╗ ██╗██╗
   ╚══██╔══╝██╔══██╗██╔════╝██╔════╝██╔═══██╗██║██║
      ██║   ██████╔╝█████╗  █████╗  ██║   ██║██║██║
