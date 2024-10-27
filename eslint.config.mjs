@@ -32,6 +32,8 @@ export default [
             'one-var': 'off',
             'camelcase': 'error',
             'quotes': ['error', 'single'],
+            'space-infix-ops': 'error',
+            'space-unary-ops': 'error',
             'sort-imports': ['error', { allowSeparatedGroups: true }],
 
             // Rules for TypeScript
