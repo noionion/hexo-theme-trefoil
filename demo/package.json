@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev:clean": "hexo clean",
-    "dev:build": "hexo generate",
-    "dev:server": "hexo server",
-    "dev": "run-s dev:clean dev:build dev:server",
-    "deploy": "hexo deploy"
+    "hexo:clean": "hexo clean",
+    "hexo:build": "hexo generate",
+    "hexo:server": "hexo server",
+    "dev": "run-s hexo:clean hexo:build hexo:server",
+    "deploy": "hexo deploy",
+    "check": "run-s hexo:clean hexo:build"
   },
   "hexo": {
     "version": "7.3.0"

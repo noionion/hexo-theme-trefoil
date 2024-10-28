@@ -1,3 +1,9 @@
 #!/usr/bin/env sh
 
+# eslint
 pnpm run eslint
+
+# run check
+pnpm run build
+cd demo || exit
+pnpm run check
