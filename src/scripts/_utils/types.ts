@@ -1,14 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+import { PostSchema } from 'hexo/dist/types';
 
-export interface Post {
-    title: string
+export interface Post extends PostSchema{
     subtitle?: string
-    source: string
-
     series_index?: number
     series_name?: string
-
-    [prop: string]: any
 }
 
 export type SeriesDict = Record<string, {

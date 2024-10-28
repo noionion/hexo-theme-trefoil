@@ -4,7 +4,7 @@ import fs from 'hexo-fs';
 import { PRIORITY_LOW } from '@/scripts/filters/_defs'
 
 import type { Post } from '@/scripts/_utils/types';
-import { useConfig } from '@/scripts/_utils/configs';
+import { useConfig } from '@/scripts/_utils';
 
 interface AbbrlinkConfigs {
     enable: boolean;
@@ -72,13 +72,13 @@ hexo.extend.filter.register('before_post_render', (data: Post) => {
         return
     }
 
-    const front = fm.parse(data.raw)
+    const front = fm.parse(data.raw!)
     const abbrlink = hash(front.title)
 
     front.abbrlink = abbrlink
     data.abbrlink = abbrlink
 
-    fs.writeFileSync(data.full_source, `---\n${fm.stringify(front) as string}`, 'utf-8')
+    fs.writeFileSync(data.full_source!, `---\n${fm.stringify(front) as string}`, 'utf-8')
 
     hexo.log.info(`Generated abbrlink ${abbrlink} for post \`${data.source}\``)
 }, PRIORITY_LOW)
