@@ -4,7 +4,6 @@ import fs from 'hexo-fs';
 import { PRIORITY_LOW } from '@/scripts/filters/_defs'
 
 import type { Post } from '@/scripts/_utils/types';
-import { useConfig } from '@/scripts/_utils';
 
 interface AbbrlinkConfigs {
     enable: boolean;
@@ -12,12 +11,12 @@ interface AbbrlinkConfigs {
 }
 
 function isEnabled(): boolean {
-    const config: AbbrlinkConfigs | undefined = useConfig().theme.abbrlink
+    const config: AbbrlinkConfigs | undefined = hexo.theme.config.abbrlink
     return Boolean(config?.enable)
 }
 
 function hash(...args: any[]): string {
-    const config: AbbrlinkConfigs = useConfig().theme.abbrlink
+    const config: AbbrlinkConfigs = hexo.theme.config.abbrlink
 
     const exp = Math.max(Math.min(config.length || 0, 7), 5)
     const m = 10 ** exp

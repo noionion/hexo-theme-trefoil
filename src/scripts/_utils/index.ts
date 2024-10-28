@@ -1,11 +1,4 @@
-import { LocalsType } from 'hexo/dist/types'
-
-export function useConfig() {
-    return {
-        default: hexo.config,
-        theme: hexo.theme.config
-    }
-}
+import type {LocalsType} from 'hexo/dist/types'
 
 export function trim(strings: TemplateStringsArray, ...args: any[]): string {
     const array: string[] = [strings[0]]
