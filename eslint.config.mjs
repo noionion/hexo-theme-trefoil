@@ -24,6 +24,8 @@ export default [
         rules: {
             // Apply default rules
             ...eslint.configs.all.rules,
+            'capitalized-comments': 'off',
+            'func-names': 'off',
             'func-style': 'off',
             'id-length': 'off',
             'max-statements': 'off',
