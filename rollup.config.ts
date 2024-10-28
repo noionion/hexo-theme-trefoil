@@ -19,7 +19,8 @@ export default defineConfig({
     input: Object.fromEntries(inputs.map((p) => [parse(p), p])),
     output: {
         dir: 'build',
-        format: 'cjs'
+        format: 'cjs',
+        preserveModules: true
     },
     plugins: [
         NodeResolve(),
