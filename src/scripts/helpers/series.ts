@@ -50,3 +50,31 @@ hexo.extend.helper.register('__series_get_home_url', (post: Post) => {
     }
     return ''
 })
+
+hexo.extend.helper.register('__series_get_page_prev', (post: Post) => {
+    const seriesDist: SeriesDict = hexo.locals.get('series_dist')
+    if ((typeof post.series_name) === 'string' && !isNaN(post.series_index!) && post.series_index !== 0) {
+        const seriesPages: Post[] = seriesDist[post.series_name!].pages
+        for (const [ index, it ] of seriesPages.entries()) {
+                if (it.series_index !== post.series_index) {
+                    continue
+                }
+                return seriesPages[index - 1] as any || null
+        }
+    }
+    return null
+})
+
+hexo.extend.helper.register('__series_get_page_next', (post: Post) => {
+    const seriesDist: SeriesDict = hexo.locals.get('series_dist')
+    if ((typeof post.series_name) === 'string' && !isNaN(post.series_index!) && post.series_index !== 0) {
+        const seriesPages: Post[] = seriesDist[post.series_name!].pages
+        for (const [ index, it ] of seriesPages.entries()) {
+                if (it.series_index !== post.series_index) {
+                    continue
+                }
+                return seriesPages[index + 1] as any || null
+        }
+    }
+    return null
+})
