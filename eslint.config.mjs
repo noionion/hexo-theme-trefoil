@@ -29,6 +29,7 @@ export default [
             'func-style': 'off',
             'id-length': 'off',
             'max-statements': 'off',
+            'no-continue': 'off',
             'no-magic-numbers': 'off',
             'no-plusplus': 'off',
             'one-var': 'off',
@@ -43,10 +44,11 @@ export default [
             ...extract(tslint.configs.stylisticTypeChecked),
             '@typescript-eslint/no-explicit-any': 'off',
             '@typescript-eslint/no-non-null-assertion': 'off',
+            '@typescript-eslint/no-unsafe-argument': 'off',
             '@typescript-eslint/no-unsafe-assignment': 'off',
             '@typescript-eslint/no-unsafe-call': 'off',
             '@typescript-eslint/no-unsafe-member-access': 'off',
-            '@typescript-eslint/no-unsafe-argument': 'off',
+            '@typescript-eslint/no-unsafe-return': 'off',
             '@typescript-eslint/restrict-template-expressions': ['error', { allowAny: false, allowNumber: true }],
             "@typescript-eslint/naming-convention": "error"
         }
