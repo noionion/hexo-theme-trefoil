@@ -42,3 +42,11 @@ hexo.extend.helper.register('__series_toc', wrap((ctx: LocalsType, post: Post) =
 
     return tocStr.join('')
 }))
+
+hexo.extend.helper.register('__series_get_home_url', (post: Post) => {
+    const seriesDist: SeriesDict = hexo.locals.get('series_dist')
+    if ((typeof post.series_name) === 'string' && !isNaN(post.series_index!)) {
+        return seriesDist[post.series_name!].home.path!
+    }
+    return ''
+})
