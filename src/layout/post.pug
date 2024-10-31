@@ -1,24 +1,24 @@
 link(rel="canonical" href=url_no_index())
 !=fragment_cache('inject_head', function(){return inject_html(theme.inject.head)})
 
-toc#toc!=__series_toc(page)
+toc#toc!=series_toc(page)
 article#article-container!=page.content
 // if in a series_dict
 #post-context
   if (typeof(page.series_name) === 'string' && page.series_index !== 0)
-    - let prevpage = __series_get_page_prev(page)
-    - let nextpage = __series_get_page_next(page)
+    - let prevpage = series_get_page_prev(page)
+    - let nextpage = series_get_page_next(page)
     #post-prev
       if (prevpage)
         span= _p("page.context_prev")
         a(href=url_for(prevpage.path))= prevpage.subtitle
       else
         span= _p("page.return_series_home")
-        a(href=url_for(__series_get_home_url(page)))= page.title
+        a(href=url_for(series_get_home_url(page)))= page.title
     #post-next
       if (nextpage)
         span= _p("page.context_next")
         a(href=url_for(nextpage.path))= nextpage.subtitle
       else
         span= _p("page.return_series_home")
-        a(href=url_for(__series_get_home_url(page)))= page.title
+        a(href=url_for(series_get_home_url(page)))= page.title

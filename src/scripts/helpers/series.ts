@@ -2,7 +2,7 @@ import { Post, SeriesDict } from '@/scripts/_utils/types';
 import { trim, wrap } from '@/scripts/_utils';
 import { LocalsType } from 'hexo/dist/types';
 
-hexo.extend.helper.register('__series_toc', wrap((ctx: LocalsType, post: Post) => {
+hexo.extend.helper.register('series_toc', wrap((ctx: LocalsType, post: Post) => {
     const seriesDist: SeriesDict = hexo.locals.get('series_dist')
     const tocStr: string[] = []
     if ((typeof post.series_name) === 'string'
@@ -43,7 +43,7 @@ hexo.extend.helper.register('__series_toc', wrap((ctx: LocalsType, post: Post) =
     return tocStr.join('')
 }))
 
-hexo.extend.helper.register('__series_get_home_url', (post: Post) => {
+hexo.extend.helper.register('series_get_home_url', (post: Post) => {
     const seriesDist: SeriesDict = hexo.locals.get('series_dist')
     if ((typeof post.series_name) === 'string' && !isNaN(post.series_index!)) {
         return seriesDist[post.series_name!].home.path!
@@ -51,7 +51,7 @@ hexo.extend.helper.register('__series_get_home_url', (post: Post) => {
     return ''
 })
 
-hexo.extend.helper.register('__series_get_page_prev', (post: Post) => {
+hexo.extend.helper.register('series_get_page_prev', (post: Post) => {
     const seriesDist: SeriesDict = hexo.locals.get('series_dist')
     if ((typeof post.series_name) === 'string' && !isNaN(post.series_index!) && post.series_index !== 0) {
         const seriesPages: Post[] = seriesDist[post.series_name!].pages
@@ -65,7 +65,7 @@ hexo.extend.helper.register('__series_get_page_prev', (post: Post) => {
     return null
 })
 
-hexo.extend.helper.register('__series_get_page_next', (post: Post) => {
+hexo.extend.helper.register('series_get_page_next', (post: Post) => {
     const seriesDist: SeriesDict = hexo.locals.get('series_dist')
     if ((typeof post.series_name) === 'string' && !isNaN(post.series_index!) && post.series_index !== 0) {
         const seriesPages: Post[] = seriesDist[post.series_name!].pages
