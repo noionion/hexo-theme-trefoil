@@ -1,3 +1,6 @@
+link(rel="canonical" href=url_no_index())
+!=fragment_cache('inject_head', function(){return inject_html(theme.inject.head)})
+
 toc#toc!=__series_toc(page)
 article#article-container!=page.content
 // if in a series_dict

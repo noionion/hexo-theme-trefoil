@@ -36,6 +36,7 @@ export default defineConfig({
     external: [
         "cheerio",
         "hexo-front-matter",
-        "hexo-fs"
+        "hexo-fs",
+        "hexo-util"
     ],
 })

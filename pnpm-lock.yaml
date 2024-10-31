@@ -23,6 +23,9 @@ importers:
       hexo-renderer-pug:
         specifier: ^3.0.0
         version: 3.0.0
+      hexo-util:
+        specifier: ^3.3.0
+        version: 3.3.0
     devDependencies:
       '@eslint/js':
         specifier: ^9.13.0

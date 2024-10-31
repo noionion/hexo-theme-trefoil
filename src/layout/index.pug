@@ -1,3 +1,7 @@
+link(rel="canonical" href=url_no_index())
+link(rel="canonical" href=full_url_for(config.url, { trailing_html: true, trailing_index: true }))
+!=fragment_cache('inject_head', function(){return inject_html(theme.inject.head)})
+
 if is_home()
     each post, index in page.posts.data
         div

@@ -17,7 +17,11 @@
     "type": "git",
     "url": "https://github.com/2X-ercha/hexo-theme-trefoil.git"
   },
-  "keywords": ["hexo", "theme", "trefoil"],
+  "keywords": [
+    "hexo",
+    "theme",
+    "trefoil"
+  ],
   "author": "noionion <noionion@outlook.com> (https://github.com/2X-ercha)",
   "maintainers": [
     "Mufanc <mufanc.xyz@gmail.com> (https://github.com/Mufanc)"
@@ -28,7 +32,8 @@
     "hexo-front-matter": "^4.2.1",
     "hexo-fs": "^4.1.3",
     "hexo-renderer-less": "^4.0.0",
-    "hexo-renderer-pug": "^3.0.0"
+    "hexo-renderer-pug": "^3.0.0",
+    "hexo-util": "^3.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
